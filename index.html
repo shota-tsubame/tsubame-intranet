@@ -1756,9 +1756,16 @@ async function initPresPage(){
       document.getElementById('weeklyWeekLabel').textContent = weeklyData.week_label || '';
       document.getElementById('weeklyText').textContent = weeklyData.text_content || '（未登録）';
       if(weeklyData.image_url){
-        document.getElementById('weeklyImage').src = weeklyData.image_url;
-        document.getElementById('weeklyImage').style.display = 'block';
-        document.getElementById('weeklyNoImage').style.display = 'none';
+        const isPdf = weeklyData.image_url.endsWith('.pdf');
+        if(isPdf){
+          document.getElementById('weeklyImage').style.display='none';
+          document.getElementById('weeklyNoImage').innerHTML=`<a href="${weeklyData.image_url}" target="_blank" style="color:var(--gold);font-size:13px;font-weight:600">📄 PDFを開く →</a>`;
+          document.getElementById('weeklyNoImage').style.display='block';
+        } else {
+          document.getElementById('weeklyImage').src = weeklyData.image_url;
+          document.getElementById('weeklyImage').style.display = 'block';
+          document.getElementById('weeklyNoImage').style.display = 'none';
+        }
       }
     } else {
       document.getElementById('weeklyWeekLabel').textContent = '今週の一言';
@@ -1810,12 +1817,13 @@ function openPresEdit(mode){
       <input class="pm-input" id="pmWeekLabel" value="${weeklyData?.week_label||''}">
       <label class="pm-label">📝 テキスト一言</label>
       <textarea class="pm-textarea" id="pmWeeklyText">${weeklyData?.text_content||''}</textarea>
-      <label class="pm-label">🖊️ 筆書き画像（スマホで撮影した写真）</label>
+      <label class="pm-label">🖊️ 筆書き画像・PDF（スマホで撮影した写真またはPDF）</label>
       <div class="pm-upload-area" onclick="document.getElementById('pmImageInput').click()">
-        <input type="file" id="pmImageInput" accept="image/*" style="display:none" onchange="previewImage(this)">
-        <div class="pm-upload-icon">📷</div>
-        <div class="pm-upload-text">タップして画像を選択<br>（JPG・PNG・HEIC対応）</div>
+        <input type="file" id="pmImageInput" accept="image/*,.pdf" style="display:none" onchange="previewImage(this)">
+        <div class="pm-upload-icon">📎</div>
+        <div class="pm-upload-text">タップしてファイルを選択<br>（JPG・PNG・HEIC・PDF対応）</div>
         <img id="pmPreview" class="pm-preview">
+        <div id="pmPdfPreview" style="display:none;margin-top:10px;padding:10px;background:#f0f2f5;border-radius:6px;font-size:12px;color:var(--navy);display:flex;align-items:center;gap:8px"><span>📄</span><span id="pmPdfName"></span></div>
       </div>`;
   } else if(mode === 'themes'){
     document.getElementById('presModalTitle').textContent = '🎯 今月の重点テーマを編集';
@@ -1833,13 +1841,27 @@ document.getElementById('presModal').addEventListener('click', function(e){ if(e
 function previewImage(input){
   if(!input.files || !input.files[0]) return;
   uploadedImageFile = input.files[0];
-  const reader = new FileReader();
-  reader.onload = e => {
-    const prev = document.getElementById('pmPreview');
-    prev.src = e.target.result;
-    prev.style.display = 'block';
-  };
-  reader.readAsDataURL(uploadedImageFile);
+  const isPdf = uploadedImageFile.type === 'application/pdf';
+  if(isPdf){
+    // PDF preview - show filename
+    document.getElementById('pmPreview').style.display='none';
+    const pdfDiv = document.getElementById('pmPdfPreview');
+    if(pdfDiv){
+      pdfDiv.style.display='flex';
+      document.getElementById('pmPdfName').textContent = uploadedImageFile.name;
+    }
+  } else {
+    // Image preview
+    const pdfDiv = document.getElementById('pmPdfPreview');
+    if(pdfDiv) pdfDiv.style.display='none';
+    const reader = new FileReader();
+    reader.onload = e => {
+      const prev = document.getElementById('pmPreview');
+      prev.src = e.target.result;
+      prev.style.display = 'block';
+    };
+    reader.readAsDataURL(uploadedImageFile);
+  }
 }
 
 async function savePresData(){
@@ -1879,9 +1901,16 @@ async function savePresData(){
       document.getElementById('weeklyWeekLabel').textContent = week_label;
       document.getElementById('weeklyText').textContent = text_content;
       if(image_url){
-        document.getElementById('weeklyImage').src = image_url;
-        document.getElementById('weeklyImage').style.display='block';
-        document.getElementById('weeklyNoImage').style.display='none';
+        const isPdf = image_url.endsWith('.pdf');
+        if(isPdf){
+          document.getElementById('weeklyImage').style.display='none';
+          document.getElementById('weeklyNoImage').innerHTML=`<a href="${image_url}" target="_blank" style="color:var(--gold);font-size:13px;font-weight:600">📄 PDFを開く →</a>`;
+          document.getElementById('weeklyNoImage').style.display='block';
+        } else {
+          document.getElementById('weeklyImage').src = image_url;
+          document.getElementById('weeklyImage').style.display='block';
+          document.getElementById('weeklyNoImage').style.display='none';
+        }
       }
       showToast('✅ 週間一言を更新しました');
 
