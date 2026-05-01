@@ -645,8 +645,8 @@ tr:hover td{background:#fafbfc;}
         <!-- President preview -->
         <div class="pres-preview" onclick="showPage('pres')">
           <div class="pres-label">✍️ 今週の一言　／　社長メッセージ</div>
-          <div class="pres-quote">「継続は力なり。小さな積み重ねが、大きな信頼をつくる。」</div>
-          <div class="pres-from">代表取締役社長　／　2025年第28週</div>
+          <div class="pres-quote" id="homeWeeklyText">「継続は力なり。小さな積み重ねが、大きな信頼をつくる。」</div>
+          <div class="pres-from">代表取締役社長　／　<span id="homeWeeklyLabel">2025年第28週</span></div>
           <div class="pres-more">メッセージ全文を読む <span>→</span></div>
         </div>
         <!-- Today's Shared Info Board -->
@@ -1107,7 +1107,21 @@ function goPortal(){show('portalScreen');initPortal();}
 
 // ─── PORTAL ───
 const NOW=new Date(),DAYS=['日','月','火','水','木','金','土'];
+
+// ─── HOME WEEKLY PREVIEW ───
+async function loadHomeWeeklyPreview(){
+  try {
+    const rows = await sbGet('weekly_message', 'order=created_at.desc&limit=1');
+    if(rows && rows.length > 0){
+      const w = rows[0];
+      if(w.text_content) document.getElementById('homeWeeklyText').textContent = '「' + w.text_content + '」';
+      if(w.week_label) document.getElementById('homeWeeklyLabel').textContent = w.week_label;
+    }
+  } catch(e){ console.error('Home weekly preview error:', e); }
+}
+
 function initPortal(){
+  loadHomeWeeklyPreview();
   document.getElementById('wName').textContent=currentUser.name;
   document.getElementById('wSub').textContent=currentUser.dept+'　'+currentUser.role;
   document.getElementById('hAv').textContent=currentUser.name.charAt(0);
@@ -1739,7 +1753,7 @@ async function initPresPage(){
       // Greeting
       document.getElementById('greetingLoading').style.display='none';
       document.getElementById('greetingText').style.display='block';
-      document.getElementById('greetingText').textContent = presData.greeting || '（未登録）';
+      document.getElementById('greetingText').innerHTML = (presData.greeting || '（未登録）').replace(/\n/g, '<br>');
       // Themes
       document.getElementById('themesLoading').style.display='none';
       document.getElementById('themesList').style.display='flex';
@@ -1877,7 +1891,7 @@ async function savePresData(){
       } else {
         await sbPost('president_page', {greeting});
       }
-      document.getElementById('greetingText').textContent = greeting;
+      document.getElementById('greetingText').innerHTML = greeting.replace(/\n/g, '<br>');
       showToast('✅ 挨拶文を更新しました');
 
     } else if(presEditMode === 'weekly'){
