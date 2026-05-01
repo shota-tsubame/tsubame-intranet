@@ -300,6 +300,121 @@ tr:hover td{background:#fafbfc;}
 .doc-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
 .doc-subs{font-size:11px;color:var(--text-muted);line-height:1.6;}
 
+
+/* ── BOARD (つばめ広場) ── */
+.board-hero{background:linear-gradient(135deg,#0d2640 0%,#1a3a5c 50%,#0f2d4a 100%);padding:28px 20px 24px;position:relative;overflow:hidden;}
+.board-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(60deg,transparent,transparent 30px,rgba(200,168,75,0.03) 30px,rgba(200,168,75,0.03) 31px);}
+.board-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.board-hero-inner{max-width:1360px;margin:0 auto;position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.board-hero-left{}
+.board-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.3);border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:10px;}
+.board-title{font-family:'Shippori Mincho',serif;font-size:26px;color:var(--white);margin-bottom:4px;}
+.board-subtitle{font-size:12px;color:rgba(255,255,255,0.4);}
+.board-post-btn{background:var(--gold);color:var(--navy);border:none;border-radius:9px;padding:11px 22px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.2s;flex-shrink:0;}
+.board-post-btn:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(200,168,75,0.35);}
+.board-body{max-width:1360px;margin:0 auto;padding:22px 28px;}
+/* Category filter */
+.board-cats{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px;}
+.board-cat{background:var(--white);border:1px solid var(--gray-200);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--text-muted);cursor:pointer;transition:.18s;font-family:inherit;}
+.board-cat:hover{border-color:var(--gold);color:var(--navy);}
+.board-cat.active{background:var(--navy);border-color:var(--navy);color:var(--white);}
+/* Post card */
+.board-posts{display:flex;flex-direction:column;gap:14px;}
+.bpost{background:var(--white);border-radius:12px;border:1px solid var(--gray-200);overflow:hidden;transition:.2s;}
+.bpost:hover{box-shadow:var(--shadow-md);}
+.bpost-main{padding:18px 20px;}
+.bpost-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
+.bpost-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#7a5a18);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--navy);flex-shrink:0;}
+.bpost-meta{flex:1;}
+.bpost-name{font-size:13px;font-weight:700;color:var(--navy);}
+.bpost-info{font-size:11px;color:var(--text-muted);margin-top:2px;display:flex;align-items:center;gap:8px;}
+.bpost-cat-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.bcat-work{background:#e8f0fe;color:#1d4ed8;}
+.bcat-chat{background:#f0fdf4;color:#15803d;}
+.bcat-idea{background:#fef9ec;color:#92400e;}
+.bcat-info{background:#fdf4ff;color:#7c3aed;}
+.bpost-body{font-size:14px;color:var(--text);line-height:1.8;margin-bottom:12px;}
+.bpost-actions{display:flex;align-items:center;gap:12px;}
+.bpost-like{background:none;border:1px solid var(--gray-200);border-radius:20px;padding:5px 12px;font-size:12px;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:5px;color:var(--text-muted);transition:.18s;}
+.bpost-like:hover{border-color:#e879a0;color:#e879a0;}
+.bpost-like.liked{background:#fdf0f5;border-color:#e879a0;color:#e879a0;}
+.bpost-comment-btn{background:none;border:none;font-size:12px;color:var(--text-muted);cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px;transition:.18s;}
+.bpost-comment-btn:hover{color:var(--navy);}
+/* Comments */
+.bpost-comments{border-top:1px solid var(--gray-200);background:var(--gray-100);}
+.bcomment{padding:12px 20px;border-bottom:1px solid var(--gray-200);display:flex;gap:10px;}
+.bcomment:last-child{border-bottom:none;}
+.bcomment-av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#4338ca);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px;}
+.bcomment-name{font-size:12px;font-weight:700;color:var(--navy);}
+.bcomment-text{font-size:12px;color:var(--text);line-height:1.7;margin-top:2px;}
+.bcomment-meta{font-size:10px;color:var(--gray-400);margin-top:2px;}
+.bcomment-input-row{padding:10px 14px;display:flex;gap:8px;align-items:center;border-top:1px solid var(--gray-200);}
+.bcomment-input{flex:1;padding:8px 12px;border:1px solid var(--gray-200);border-radius:20px;font-size:12px;font-family:inherit;outline:none;background:var(--white);}
+.bcomment-input:focus{border-color:var(--gold);}
+.bcomment-send{background:var(--navy);color:var(--white);border:none;border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:.18s;}
+.bcomment-send:hover{background:var(--navy-light);}
+/* Post modal */
+.board-modal-ov{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:999;backdrop-filter:blur(4px);}
+.board-modal-ov.open{display:flex;}
+.board-modal{background:var(--white);border-radius:14px;padding:28px;width:520px;max-width:95vw;box-shadow:var(--shadow-lg);animation:fadeUp .22s ease both;}
+.board-modal-title{font-family:'Shippori Mincho',serif;font-size:18px;color:var(--navy);margin-bottom:18px;}
+.bm-label{font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:1px;display:block;margin-bottom:6px;}
+.bm-select{width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:7px;font-size:13px;font-family:inherit;color:var(--text);outline:none;margin-bottom:13px;}
+.bm-select:focus{border-color:var(--gold);}
+.bm-textarea{width:100%;padding:11px 13px;border:1px solid var(--gray-200);border-radius:7px;font-size:13px;font-family:inherit;color:var(--text);outline:none;resize:vertical;min-height:110px;line-height:1.7;}
+.bm-textarea:focus{border-color:var(--gold);}
+@media(max-width:640px){.board-body{padding:14px;}.bpost-body{font-size:13px;}.board-hero{padding:20px 14px 18px;}.board-title{font-size:20px;}}
+
+
+/* ── SUPABASE CONFIG ── */
+/* SUPABASE_URL and SUPABASE_KEY are injected via JS */
+
+/* ── PRESIDENT PAGE (redesigned) ── */
+.pres-page-wrap{max-width:860px;margin:0 auto;padding:28px;}
+.pres-section{background:var(--white);border-radius:14px;border:1px solid var(--gray-200);overflow:hidden;margin-bottom:20px;}
+.pres-section-hdr{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;}
+.pres-section-hdr h3{font-family:'Shippori Mincho',serif;font-size:15px;color:var(--white);display:flex;align-items:center;gap:8px;}
+.pres-section-hdr .edit-btn{background:rgba(200,168,75,0.2);border:1px solid rgba(200,168,75,0.4);border-radius:5px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--gold);cursor:pointer;font-family:inherit;transition:.18s;}
+.pres-section-hdr .edit-btn:hover{background:rgba(200,168,75,0.35);}
+.pres-section-body{padding:22px;}
+/* Greeting */
+.pres-greeting-text{font-family:'Shippori Mincho',serif;font-size:15px;line-height:2.1;color:var(--text);}
+/* Weekly message */
+.weekly-card{background:linear-gradient(135deg,#0d1f35 0%,#1a3558 100%);border-radius:10px;padding:20px 22px;position:relative;overflow:hidden;}
+.weekly-card::before{content:'';position:absolute;bottom:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(200,168,75,0.15) 0%,transparent 70%);}
+.weekly-week{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:10px;}
+.weekly-text{font-family:'Shippori Mincho',serif;font-size:17px;color:var(--white);line-height:1.9;margin-bottom:10px;}
+.weekly-image{width:100%;border-radius:8px;margin-top:12px;max-height:320px;object-fit:contain;background:#0a1628;}
+.weekly-tabs{display:flex;gap:6px;margin-bottom:16px;}
+.wtab{background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--text-muted);cursor:pointer;font-family:inherit;transition:.18s;}
+.wtab.active{background:var(--navy);border-color:var(--navy);color:var(--white);}
+.weekly-tab-panel{display:none;}
+.weekly-tab-panel.active{display:block;}
+/* Themes */
+.themes-list{display:flex;flex-direction:column;gap:8px;}
+.theme-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--gray-100);border-radius:8px;font-size:13px;color:var(--text);}
+.theme-num{width:24px;height:24px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+/* Loading state */
+.pres-loading{padding:32px;text-align:center;color:var(--text-muted);font-size:13px;}
+.pres-loading-spinner{width:28px;height:28px;border:3px solid var(--gray-200);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 10px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+/* Edit modal for president */
+.pres-modal-ov{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:999;backdrop-filter:blur(4px);}
+.pres-modal-ov.open{display:flex;}
+.pres-modal{background:var(--white);border-radius:14px;padding:30px;width:540px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:fadeUp .22s ease both;}
+.pres-modal-title{font-family:'Shippori Mincho',serif;font-size:18px;color:var(--navy);margin-bottom:18px;}
+.pm-label{font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:1px;display:block;margin-bottom:6px;margin-top:13px;}
+.pm-input{width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:7px;font-size:13px;font-family:inherit;color:var(--text);outline:none;}
+.pm-input:focus{border-color:var(--gold);}
+.pm-textarea{width:100%;padding:11px 13px;border:1px solid var(--gray-200);border-radius:7px;font-size:13px;font-family:inherit;color:var(--text);outline:none;resize:vertical;min-height:120px;line-height:1.7;}
+.pm-textarea:focus{border-color:var(--gold);}
+.pm-upload-area{border:2px dashed var(--gray-200);border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:.18s;position:relative;}
+.pm-upload-area:hover{border-color:var(--gold);background:var(--gold-pale);}
+.pm-upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.pm-upload-icon{font-size:28px;margin-bottom:6px;}
+.pm-upload-text{font-size:12px;color:var(--text-muted);}
+.pm-preview{width:100%;border-radius:6px;margin-top:10px;max-height:200px;object-fit:contain;display:none;}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 .fade-in{animation:fadeUp .35s ease both;}
 @media(max-width:900px){.main{grid-template-columns:1fr;padding:16px;}.dept-overview-grid{grid-template-columns:repeat(2,1fr);}.sum-cards{grid-template-columns:repeat(2,1fr);}.ph-inner{grid-template-columns:1fr;}.pres-content-grid{grid-template-columns:1fr;}}
@@ -498,13 +613,9 @@ tr:hover td{background:#fafbfc;}
       <nav id="mainNav">
         <button onclick="showPage('home')" data-page="home" class="active">ホーム</button>
         <button onclick="showPage('pres')" data-page="pres">社長メッセージ</button>
-        <button onclick="showPage('dept','eigyo')" data-page="dept-eigyo">営業本部</button>
-        <button onclick="showPage('dept','keiei')" data-page="dept-keiei">経営管理本部</button>
-        <button onclick="showPage('dept','seibi')" data-page="dept-seibi">整備管理本部</button>
-        <button onclick="showPage('dept','unko')" data-page="dept-unko">運行管理本部</button>
-        <button onclick="showPage('dept','romu')" data-page="dept-romu">労務管理本部</button>
-        <button onclick="showPage('dept','kikaku')" data-page="dept-kikaku">企画室</button>
-        <button onclick="showPage('know')" data-page="know">つばめナレッジ</button>
+        <button onclick="showPage('board')" data-page="board">つばめ広場</button>
+        <button onclick="showPage('know')" data-page="know">ナレッジ集</button>
+        <button onclick="showPage('depts')" data-page="depts">部署リンク</button>
         <button id="adminNavBtn" style="display:none;color:var(--gold)" onclick="goAdmin()">⚙ 管理</button>
       </nav>
       <div class="hdr-right">
@@ -613,58 +724,160 @@ tr:hover td{background:#fafbfc;}
   <!-- PRESIDENT MESSAGE -->
   <div id="page-pres" class="page">
     <div class="pres-hero">
-      <div class="ph-inner">
+      <div class="ph-inner" style="grid-template-columns:1fr">
         <div>
           <div class="ph-label">MESSAGE FROM THE PRESIDENT</div>
-          <div class="ph-title">移動の価値を高め、<br><em>地域社会と共に歩む</em></div>
-          <div class="ph-from">代表取締役社長</div>
-          <div class="ph-sig">山田 誠一郎</div>
+          <div class="ph-title">社長メッセージ</div>
+          <div class="ph-from">代表取締役社長　山田 誠一郎</div>
         </div>
-        <div class="pres-photo-placeholder"><span>👤</span><p>社長写真<br>ここに掲載</p></div>
       </div>
     </div>
-    <div class="pres-content">
-      <div class="pres-content-grid">
-        <div>
-          <div class="pres-message-body">
-            <p>社員の皆さん、日々の業務へのご尽力に心から感謝申し上げます。</p>
-            <p>私たちは、ハイヤー・タクシー・バス・レンタカーをはじめ、旅行・船舶・農業まで多岐にわたる事業を展開しています。この多様性こそが、私たちの強みです。</p>
-            <p>しかし、変化の激しい時代において強みを活かし続けるには、組織全体が一体となって動くことが不可欠です。営業本部から運行管理、整備、労務、企画に至るまで、すべての部署が連携して初めて、お客様に最高の体験を提供できます。</p>
-            <p>今年度は「地域との共創」をテーマに掲げました。移動サービスを通じて地域の課題を解決し、人と人をつなぐプラットフォームへと進化していきましょう。</p>
-            <p>皆さん一人ひとりのアイデアと行動が、会社の未来をつくります。共に前進してまいりましょう。</p>
+    <div class="pres-page-wrap">
+
+      <!-- ① 社長からの挨拶 -->
+      <div class="pres-section">
+        <div class="pres-section-hdr">
+          <h3>🕊️ 社長からの挨拶</h3>
+          <button class="edit-btn" id="greetingEditBtn" style="display:none" onclick="openPresEdit('greeting')">編集</button>
+        </div>
+        <div class="pres-section-body">
+          <div class="pres-loading" id="greetingLoading">
+            <div class="pres-loading-spinner"></div>読み込み中...
+          </div>
+          <div class="pres-greeting-text" id="greetingText" style="display:none"></div>
+        </div>
+      </div>
+
+      <!-- ② 週間一言 -->
+      <div class="pres-section">
+        <div class="pres-section-hdr">
+          <h3>✍️ 週間一言</h3>
+          <button class="edit-btn" id="weeklyEditBtn" style="display:none" onclick="openPresEdit('weekly')">今週の一言を更新</button>
+        </div>
+        <div class="pres-section-body">
+          <div class="pres-loading" id="weeklyLoading">
+            <div class="pres-loading-spinner"></div>読み込み中...
+          </div>
+          <div id="weeklyContent" style="display:none">
+            <div class="weekly-card">
+              <div class="weekly-week" id="weeklyWeekLabel">—</div>
+              <div class="weekly-tabs">
+                <button class="wtab active" onclick="switchWeeklyTab('text',this)">📝 テキスト</button>
+                <button class="wtab" onclick="switchWeeklyTab('image',this)">🖊️ 筆書き</button>
+              </div>
+              <div class="weekly-tab-panel active" id="wtab-text">
+                <div class="weekly-text" id="weeklyText">—</div>
+              </div>
+              <div class="weekly-tab-panel" id="wtab-image">
+                <img id="weeklyImage" class="weekly-image" src="" alt="週間一言" style="display:none">
+                <iframe id="weeklyPdf" style="display:none;width:100%;height:480px;border-radius:8px;border:none;background:#fff;" allowfullscreen></iframe>
+                <div id="weeklyNoImage" style="padding:20px;text-align:center;color:rgba(255,255,255,0.3);font-size:13px">画像は登録されていません</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="pres-sidebar-cards">
-          <div class="pres-sc">
-            <h4>🎯 今期の重点テーマ</h4>
-            <ul>
-              <li>地域との共創・連携強化</li>
-              <li>DXによる業務効率化</li>
-              <li>人材育成・トレーニング充実</li>
-              <li>モビリティサービスの拡充</li>
-              <li>Agriculture事業の育成</li>
-            </ul>
-          </div>
-          <div class="pres-sc" style="border:1px solid rgba(200,168,75,0.3);background:linear-gradient(135deg,#0d1f35 0%,#1a3558 100%);">
-            <h4 style="color:var(--gold);display:flex;align-items:center;gap:6px">✍️ 今週の一言</h4>
-            <div style="font-family:'Shippori Mincho',serif;font-size:15px;color:#fff;line-height:1.9;margin:8px 0 10px;">「継続は力なり。小さな積み重ねが、大きな信頼をつくる。」</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.4)">2025年第28週（7月7日〜）</div>
-          </div>
-          <div class="pres-sc">
-            <h4>📅 経営方針発表</h4>
-            <ul>
-              <li>2025年度方針：4月発表済</li>
-              <li>下期目標：7月25日総会</li>
-              <li>次回社長懇談会：8月予定</li>
-            </ul>
-          </div>
+      </div>
+
+      <!-- ③ 今月の重点テーマ -->
+      <div class="pres-section">
+        <div class="pres-section-hdr">
+          <h3>🎯 今月の重点テーマ</h3>
+          <button class="edit-btn" id="themesEditBtn" style="display:none" onclick="openPresEdit('themes')">編集</button>
         </div>
+        <div class="pres-section-body">
+          <div class="pres-loading" id="themesLoading">
+            <div class="pres-loading-spinner"></div>読み込み中...
+          </div>
+          <div class="themes-list" id="themesList" style="display:none"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- President Edit Modal -->
+  <div class="pres-modal-ov" id="presModal">
+    <div class="pres-modal">
+      <div class="pres-modal-title" id="presModalTitle">編集</div>
+      <div id="presModalBody"></div>
+      <div class="mfooter" style="margin-top:18px">
+        <button class="btn-sec" onclick="closePresModal()">キャンセル</button>
+        <button class="btn-p btn-g" id="presModalSaveBtn" onclick="savePresData()">保存する</button>
       </div>
     </div>
   </div>
 
   <!-- DEPT PAGES (dynamic) -->
   <div id="page-dept" class="page"></div>
+
+
+
+  <!-- DEPTS LIST PAGE -->
+  <div id="page-depts" class="page">
+    <div class="board-hero" style="padding-bottom:24px">
+      <div class="board-hero-inner">
+        <div class="board-hero-left">
+          <div class="board-badge">🏢 DEPARTMENTS</div>
+          <div class="board-title">部署リンク</div>
+          <div class="board-subtitle">各本部・課のページにアクセス</div>
+        </div>
+      </div>
+    </div>
+    <div class="board-body">
+      <div class="dept-overview-grid" style="max-width:1360px">
+        <div class="doc" onclick="showPage('dept','eigyo')"><div class="doc-icon" style="background:#e8f4fd">🚗</div><div class="doc-name">営業本部</div><div class="doc-subs">トラベル課・レンタカー課・自家用運行管理課・船舶事業部</div></div>
+        <div class="doc" onclick="showPage('dept','keiei')"><div class="doc-icon" style="background:#f0fdf4">📊</div><div class="doc-name">経営管理本部</div><div class="doc-subs">総務課・経理課</div></div>
+        <div class="doc" onclick="showPage('dept','seibi')"><div class="doc-icon" style="background:#fff7ed">🔧</div><div class="doc-name">整備管理本部</div><div class="doc-subs">車両整備課・環境整備課</div></div>
+        <div class="doc" onclick="showPage('dept','unko')"><div class="doc-icon" style="background:#eff6ff">🚌</div><div class="doc-name">運行管理本部</div><div class="doc-subs">コールセンター・運転代行課・タクシー課・ハイヤー課・バス課・モビリティサービス課</div></div>
+        <div class="doc" onclick="showPage('dept','romu')"><div class="doc-icon" style="background:#fdf4ff">👥</div><div class="doc-name">労務管理本部</div><div class="doc-subs">トレーニングセンター・人づくり部</div></div>
+        <div class="doc" onclick="showPage('dept','kikaku')"><div class="doc-icon" style="background:#fef9ec">💡</div><div class="doc-name">企画室</div><div class="doc-subs">人事広報グループ・Agriculture事業部</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOARD PAGE (つばめ広場) -->
+  <div id="page-board" class="page">
+    <div class="board-hero">
+      <div class="board-hero-inner">
+        <div class="board-hero-left">
+          <div class="board-badge">🕊️ TSUBAME HIROBA</div>
+          <div class="board-title">つばめ広場</div>
+          <div class="board-subtitle">社員みんなの掲示板 — 業務連絡・雑談・アイデアを自由に投稿</div>
+        </div>
+        <button class="board-post-btn" onclick="openBoardModal()">✏️ 投稿する</button>
+      </div>
+    </div>
+    <div class="board-body">
+      <div class="board-cats">
+        <button class="board-cat active" onclick="filterBoard('all',this)">すべて</button>
+        <button class="board-cat" onclick="filterBoard('work',this)">📋 業務連絡</button>
+        <button class="board-cat" onclick="filterBoard('chat',this)">💬 雑談</button>
+        <button class="board-cat" onclick="filterBoard('idea',this)">💡 アイデア</button>
+        <button class="board-cat" onclick="filterBoard('info',this)">📢 お知らせ</button>
+      </div>
+      <div class="board-posts" id="boardPosts"></div>
+    </div>
+  </div>
+
+  <!-- Board Post Modal -->
+  <div class="board-modal-ov" id="boardModal">
+    <div class="board-modal">
+      <div class="board-modal-title">✏️ 新規投稿</div>
+      <label class="bm-label">カテゴリ</label>
+      <select class="bm-select" id="bCat">
+        <option value="work">📋 業務連絡</option>
+        <option value="chat">💬 雑談</option>
+        <option value="idea">💡 アイデア</option>
+        <option value="info">📢 お知らせ</option>
+      </select>
+      <label class="bm-label">内容</label>
+      <textarea class="bm-textarea" id="bText" placeholder="自由に書いてください..."></textarea>
+      <div class="mfooter" style="margin-top:16px">
+        <button class="btn-sec" onclick="closeBoardModal()">キャンセル</button>
+        <button class="btn-p btn-g" onclick="submitPost()">投稿する</button>
+      </div>
+    </div>
+  </div>
 
   <!-- KNOWLEDGE PAGE -->
   <div id="page-know" class="page">
@@ -916,6 +1129,7 @@ function showPage(type,deptKey){
   } else if(type==='pres'){
     document.getElementById('page-pres').classList.add('active');
     document.querySelector('[data-page="pres"]').classList.add('active');
+    initPresPage();
   } else if(type==='dept'&&deptKey){
     renderDeptPage(deptKey);
     document.getElementById('page-dept').classList.add('active');
@@ -925,6 +1139,13 @@ function showPage(type,deptKey){
     document.getElementById('page-know').classList.add('active');
     document.querySelector('[data-page="know"]').classList.add('active');
     initKnowledge();
+  } else if(type==='board'){
+    document.getElementById('page-board').classList.add('active');
+    document.querySelector('[data-page="board"]').classList.add('active');
+    renderBoard('all');
+  } else if(type==='depts'){
+    document.getElementById('page-depts').classList.add('active');
+    document.querySelector('[data-page="depts"]').classList.add('active');
   }
 }
 
@@ -1017,7 +1238,7 @@ function renderDeptPage(key){
   document.getElementById('page-dept').innerHTML=`
     <div class="dept-page-header">
       <div class="dph-inner">
-        <div class="dph-badge">${d.icon} ${d.name}</div>
+        <div class="dph-badge" onclick="showPage('depts')" style="cursor:pointer">← 部署リンクに戻る</div>
         <div class="dph-title">${d.name}</div>
         <div class="dph-desc">${d.desc}</div>
         <div class="dept-tabs">${tabsHtml}</div>
@@ -1484,6 +1705,373 @@ function knowSearch(q){
   document.getElementById('knowPanelTitle').textContent=`「${q}」の検索結果（${results.length}件）`;
   document.getElementById('knowArticleList').innerHTML=results.length>0?results.map(a=>knowArticleCardHtml(a)).join(''):'<div style="padding:32px;text-align:center;color:var(--text-muted);font-size:13px">該当する記事が見つかりませんでした</div>';
   document.getElementById('know-list-panel').classList.add('active');
+}
+
+// ─── SUPABASE CONFIG ───
+const SUPABASE_URL = 'https://vconohjwzmuygwlveatq.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjb25vaGp3em11eWd3bHZlYXRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1ODc4NjgsImV4cCI6MjA5MzE2Mzg2OH0.SZkmqdQaMr7t0akKcOuEWbYCbBkUZgNmB3k0PNgOTHI';
+const SB_HEADERS = {'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`};
+
+async function sbGet(table, params=''){
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${params}`, {headers:SB_HEADERS});
+  return res.json();
+}
+async function sbPost(table, body){
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {method:'POST',headers:{...SB_HEADERS,'Prefer':'return=representation'},body:JSON.stringify(body)});
+  return res.json();
+}
+async function sbPatch(table, id, body){
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?id=eq.${id}`, {method:'PATCH',headers:{...SB_HEADERS,'Prefer':'return=representation'},body:JSON.stringify(body)});
+  return res.json();
+}
+
+// ─── PRESIDENT PAGE ───
+let presData = null;
+let weeklyData = null;
+let presEditMode = null;
+
+async function initPresPage(){
+  // Load greeting & themes
+  try {
+    const rows = await sbGet('president_page', 'order=updated_at.desc&limit=1');
+    if(rows && rows.length > 0){
+      presData = rows[0];
+      // Greeting
+      document.getElementById('greetingLoading').style.display='none';
+      document.getElementById('greetingText').style.display='block';
+      document.getElementById('greetingText').textContent = presData.greeting || '（未登録）';
+      // Themes
+      document.getElementById('themesLoading').style.display='none';
+      document.getElementById('themesList').style.display='flex';
+      renderThemes(presData.themes);
+    }
+  } catch(e){ console.error('President page load error:', e); }
+
+  // Load weekly message
+  try {
+    const rows = await sbGet('weekly_message', 'order=created_at.desc&limit=1');
+    document.getElementById('weeklyLoading').style.display='none';
+    document.getElementById('weeklyContent').style.display='block';
+    if(rows && rows.length > 0){
+      weeklyData = rows[0];
+      document.getElementById('weeklyWeekLabel').textContent = weeklyData.week_label || '';
+      document.getElementById('weeklyText').textContent = weeklyData.text_content || '（未登録）';
+      if(weeklyData.image_url){
+        const isPdf = weeklyData.image_url.endsWith('.pdf');
+        if(isPdf){
+          document.getElementById('weeklyImage').style.display='none';
+          document.getElementById('weeklyPdf').src = weeklyData.image_url;
+          document.getElementById('weeklyPdf').style.display='block';
+          document.getElementById('weeklyNoImage').style.display='none';
+        } else {
+          document.getElementById('weeklyImage').src = weeklyData.image_url;
+          document.getElementById('weeklyImage').style.display = 'block';
+          document.getElementById('weeklyNoImage').style.display = 'none';
+        }
+      }
+    } else {
+      document.getElementById('weeklyWeekLabel').textContent = '今週の一言';
+      document.getElementById('weeklyText').textContent = '（まだ登録されていません）';
+    }
+  } catch(e){ console.error('Weekly load error:', e); }
+
+  // Show edit buttons for admin
+  if(currentUser && currentUser.perm === 'admin'){
+    document.getElementById('greetingEditBtn').style.display='inline-block';
+    document.getElementById('weeklyEditBtn').style.display='inline-block';
+    document.getElementById('themesEditBtn').style.display='inline-block';
+  }
+}
+
+function renderThemes(themesStr){
+  const themes = (themesStr||'').split(',').map(t=>t.trim()).filter(Boolean);
+  document.getElementById('themesList').innerHTML = themes.map((t,i)=>`
+    <div class="theme-item">
+      <div class="theme-num">${i+1}</div>
+      <span>${t}</span>
+    </div>`).join('');
+}
+
+function switchWeeklyTab(tab, btn){
+  document.querySelectorAll('.wtab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.weekly-tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('wtab-'+tab).classList.add('active');
+}
+
+// ─── PRESIDENT EDIT MODAL ───
+let uploadedImageFile = null;
+
+function openPresEdit(mode){
+  presEditMode = mode;
+  uploadedImageFile = null;
+  const modal = document.getElementById('presModal');
+  const body = document.getElementById('presModalBody');
+  if(mode === 'greeting'){
+    document.getElementById('presModalTitle').textContent = '🕊️ 社長からの挨拶を編集';
+    body.innerHTML = `
+      <label class="pm-label">挨拶文</label>
+      <textarea class="pm-textarea" id="pmGreeting" style="min-height:180px">${presData?.greeting||''}</textarea>`;
+  } else if(mode === 'weekly'){
+    document.getElementById('presModalTitle').textContent = '✍️ 週間一言を更新';
+    body.innerHTML = `
+      <label class="pm-label">週ラベル（例：2025年第28週）</label>
+      <input class="pm-input" id="pmWeekLabel" value="${weeklyData?.week_label||''}">
+      <label class="pm-label">📝 テキスト一言</label>
+      <textarea class="pm-textarea" id="pmWeeklyText">${weeklyData?.text_content||''}</textarea>
+      <label class="pm-label">🖊️ 筆書き画像・PDF（スマホで撮影した写真またはPDF）</label>
+      <div class="pm-upload-area" onclick="document.getElementById('pmImageInput').click()">
+        <input type="file" id="pmImageInput" accept="image/*,.pdf" style="display:none" onchange="previewImage(this)">
+        <div class="pm-upload-icon">📎</div>
+        <div class="pm-upload-text">タップしてファイルを選択<br>（JPG・PNG・HEIC・PDF対応）</div>
+        <img id="pmPreview" class="pm-preview">
+        <div id="pmPdfPreview" style="display:none;margin-top:10px;padding:10px;background:#f0f2f5;border-radius:6px;font-size:12px;color:var(--navy);display:flex;align-items:center;gap:8px"><span>📄</span><span id="pmPdfName"></span></div>
+      </div>`;
+  } else if(mode === 'themes'){
+    document.getElementById('presModalTitle').textContent = '🎯 今月の重点テーマを編集';
+    body.innerHTML = `
+      <label class="pm-label">テーマ（1行につき1つ入力）</label>
+      <textarea class="pm-textarea" id="pmThemes" style="min-height:150px">${(presData?.themes||'').split(',').join('\n')}</textarea>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">※ 各テーマを改行で区切って入力してください</div>`;
+  }
+  modal.classList.add('open');
+}
+
+function closePresModal(){ document.getElementById('presModal').classList.remove('open'); uploadedImageFile=null; }
+document.getElementById('presModal').addEventListener('click', function(e){ if(e.target===this)closePresModal(); });
+
+function previewImage(input){
+  if(!input.files || !input.files[0]) return;
+  uploadedImageFile = input.files[0];
+  const isPdf = uploadedImageFile.type === 'application/pdf';
+  if(isPdf){
+    // PDF preview - show filename
+    document.getElementById('pmPreview').style.display='none';
+    const pdfDiv = document.getElementById('pmPdfPreview');
+    if(pdfDiv){
+      pdfDiv.style.display='flex';
+      document.getElementById('pmPdfName').textContent = uploadedImageFile.name;
+    }
+  } else {
+    // Image preview
+    const pdfDiv = document.getElementById('pmPdfPreview');
+    if(pdfDiv) pdfDiv.style.display='none';
+    const reader = new FileReader();
+    reader.onload = e => {
+      const prev = document.getElementById('pmPreview');
+      prev.src = e.target.result;
+      prev.style.display = 'block';
+    };
+    reader.readAsDataURL(uploadedImageFile);
+  }
+}
+
+async function savePresData(){
+  const btn = document.getElementById('presModalSaveBtn');
+  btn.textContent = '保存中...'; btn.disabled = true;
+  try {
+    if(presEditMode === 'greeting'){
+      const greeting = document.getElementById('pmGreeting').value.trim();
+      if(presData){
+        await sbPatch('president_page', presData.id, {greeting, updated_at: new Date().toISOString()});
+      } else {
+        await sbPost('president_page', {greeting});
+      }
+      document.getElementById('greetingText').textContent = greeting;
+      showToast('✅ 挨拶文を更新しました');
+
+    } else if(presEditMode === 'weekly'){
+      const week_label = document.getElementById('pmWeekLabel').value.trim();
+      const text_content = document.getElementById('pmWeeklyText').value.trim();
+      let image_url = weeklyData?.image_url || null;
+      // Upload image if selected
+      if(uploadedImageFile){
+        const ext = uploadedImageFile.name.split('.').pop();
+        const fileName = `weekly_${Date.now()}.${ext}`;
+        const uploadRes = await fetch(`${SUPABASE_URL}/storage/v1/object/president-images/${fileName}`, {
+          method:'POST',
+          headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':uploadedImageFile.type},
+          body: uploadedImageFile
+        });
+        if(uploadRes.ok){
+          image_url = `${SUPABASE_URL}/storage/v1/object/public/president-images/${fileName}`;
+        }
+      }
+      const payload = {week_label, text_content, image_url, updated_at: new Date().toISOString()};
+      await sbPost('weekly_message', payload);
+      weeklyData = {...payload};
+      document.getElementById('weeklyWeekLabel').textContent = week_label;
+      document.getElementById('weeklyText').textContent = text_content;
+      if(image_url){
+        const isPdf = image_url.endsWith('.pdf');
+        if(isPdf){
+          document.getElementById('weeklyImage').style.display='none';
+          document.getElementById('weeklyPdf').src = image_url;
+          document.getElementById('weeklyPdf').style.display='block';
+          document.getElementById('weeklyNoImage').style.display='none';
+        } else {
+          document.getElementById('weeklyImage').src = image_url;
+          document.getElementById('weeklyImage').style.display='block';
+          document.getElementById('weeklyNoImage').style.display='none';
+        }
+      }
+      showToast('✅ 週間一言を更新しました');
+
+    } else if(presEditMode === 'themes'){
+      const themesRaw = document.getElementById('pmThemes').value;
+      const themes = themesRaw.split('\n').map(t=>t.trim()).filter(Boolean).join(',');
+      if(presData){
+        await sbPatch('president_page', presData.id, {themes, updated_at: new Date().toISOString()});
+      } else {
+        await sbPost('president_page', {themes});
+      }
+      renderThemes(themes);
+      showToast('✅ 重点テーマを更新しました');
+    }
+    closePresModal();
+  } catch(e){
+    showToast('⚠ 保存に失敗しました');
+    console.error(e);
+  }
+  btn.textContent='保存する'; btn.disabled=false;
+}
+
+// ─── BOARD (つばめ広場) ───
+const CAT_MAP = {
+  work:{label:'業務連絡',cls:'bcat-work'},
+  chat:{label:'雑談',cls:'bcat-chat'},
+  idea:{label:'アイデア',cls:'bcat-idea'},
+  info:{label:'お知らせ',cls:'bcat-info'},
+};
+
+let boardPosts = [
+  {id:1,cat:'info',author:'管理者 太郎',dept:'企画室',text:'Tsubame NESTが正式オープンしました！皆さんのご意見・アイデアをどんどん投稿してください。このポータルを一緒に育てていきましょう🕊️',time:'2025/7/10 09:00',likes:[],comments:[
+    {author:'山田 太郎',dept:'営業本部',text:'オープンおめでとうございます！使いやすそうで楽しみです。',time:'09:15'},
+    {author:'鈴木 花子',dept:'労務管理本部',text:'ありがとうございます！積極的に活用していきます😊',time:'09:32'},
+  ]},
+  {id:2,cat:'work',author:'田中 一郎',dept:'運行管理本部',text:'【連絡】7/15（火）22:00〜翌2:00にシステムメンテナンスを実施します。配車アプリが一時使用できなくなりますので、ご注意ください。詳細はお知らせをご確認ください。',time:'2025/7/8 14:20',likes:[],comments:[]},
+  {id:3,cat:'idea',author:'佐藤 美咲',dept:'整備管理本部',text:'つばめナレッジに「季節ごとの車両メンテナンス注意点」を追加してはいかがでしょうか？夏場のエアコンや冬場のバッテリーなど、乗務員さんにも役立つ情報が共有できると思います💡',time:'2025/7/7 11:45',likes:[],comments:[
+    {author:'伊藤 健二',dept:'経営管理本部',text:'いいアイデアですね！整備管理本部に提案してみます。',time:'13:00'},
+  ]},
+  {id:4,cat:'chat',author:'山田 太郎',dept:'営業本部',text:'先日、お客様から「つばめのドライバーさんは感じがいい」とお褒めの言葉をいただきました！乗務員の皆さんの日々の頑張りが伝わっているんだなと嬉しくなりました🚕',time:'2025/7/5 18:30',likes:[],comments:[
+    {author:'鈴木 花子',dept:'労務管理本部',text:'素敵なエピソードですね！モチベーションが上がります✨',time:'19:00'},
+  ]},
+];
+let boardNextId = 5;
+let currentBoardCat = 'all';
+
+function renderBoard(cat){
+  const filtered = cat === 'all' ? boardPosts : boardPosts.filter(p=>p.cat===cat);
+  const sorted = [...filtered].reverse();
+  document.getElementById('boardPosts').innerHTML = sorted.map(p=>boardPostHtml(p)).join('');
+}
+
+function boardPostHtml(p){
+  const cm = CAT_MAP[p.cat]||{label:p.cat,cls:'bcat-info'};
+  const liked = p.likes.includes(currentUser?.empId||'');
+  const commentsHtml = p.comments.map(c=>`
+    <div class="bcomment">
+      <div class="bcomment-av">${c.author.charAt(0)}</div>
+      <div>
+        <div class="bcomment-name">${c.author} <span style="font-weight:400;color:var(--text-muted);font-size:11px">${c.dept}</span></div>
+        <div class="bcomment-text">${c.text}</div>
+        <div class="bcomment-meta">${c.time}</div>
+      </div>
+    </div>`).join('');
+  return `
+    <div class="bpost" id="bpost-${p.id}">
+      <div class="bpost-main">
+        <div class="bpost-top">
+          <div class="bpost-avatar">${p.author.charAt(0)}</div>
+          <div class="bpost-meta">
+            <div class="bpost-name">${p.author}</div>
+            <div class="bpost-info">
+              <span>${p.dept}</span>
+              <span class="bpost-cat-badge ${cm.cls}">${cm.label}</span>
+              <span>${p.time}</span>
+            </div>
+          </div>
+        </div>
+        <div class="bpost-body">${p.text}</div>
+        <div class="bpost-actions">
+          <button class="bpost-like ${liked?'liked':''}" onclick="toggleLike(${p.id})">
+            ${liked?'❤️':'🤍'} ${p.likes.length > 0 ? p.likes.length : 'いいね'}
+          </button>
+          <button class="bpost-comment-btn" onclick="toggleComments(${p.id})">
+            💬 コメント ${p.comments.length > 0 ? p.comments.length+'件' : ''}
+          </button>
+        </div>
+      </div>
+      <div class="bpost-comments" id="bcomments-${p.id}" style="display:${p.comments.length>0?'block':'none'}">
+        <div id="bcomment-list-${p.id}">${commentsHtml}</div>
+        <div class="bcomment-input-row">
+          <div class="bcomment-av" style="background:linear-gradient(135deg,var(--gold),#7a5a18);color:var(--navy)">${currentUser?.name?.charAt(0)||'?'}</div>
+          <input class="bcomment-input" id="bcinput-${p.id}" placeholder="コメントを入力..." onkeydown="if(event.key==='Enter')addComment(${p.id})">
+          <button class="bcomment-send" onclick="addComment(${p.id})">送信</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function toggleLike(id){
+  const p = boardPosts.find(x=>x.id===id);
+  if(!p||!currentUser)return;
+  const uid = currentUser.empId;
+  if(p.likes.includes(uid)) p.likes = p.likes.filter(x=>x!==uid);
+  else p.likes.push(uid);
+  renderBoard(currentBoardCat);
+}
+
+function toggleComments(id){
+  const el = document.getElementById('bcomments-'+id);
+  if(el) el.style.display = el.style.display==='none' ? 'block' : 'none';
+}
+
+function addComment(id){
+  const input = document.getElementById('bcinput-'+id);
+  if(!input||!input.value.trim()||!currentUser)return;
+  const p = boardPosts.find(x=>x.id===id);
+  if(!p)return;
+  const now = new Date();
+  p.comments.push({
+    author: currentUser.name,
+    dept: currentUser.dept,
+    text: input.value.trim(),
+    time: `${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`,
+  });
+  input.value='';
+  renderBoard(currentBoardCat);
+  // Re-show comments
+  setTimeout(()=>{
+    const el=document.getElementById('bcomments-'+id);
+    if(el) el.style.display='block';
+  },10);
+}
+
+function filterBoard(cat, btn){
+  currentBoardCat = cat;
+  document.querySelectorAll('.board-cat').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBoard(cat);
+}
+
+function openBoardModal(){ document.getElementById('boardModal').classList.add('open'); document.getElementById('bText').value=''; }
+function closeBoardModal(){ document.getElementById('boardModal').classList.remove('open'); }
+document.getElementById('boardModal').addEventListener('click', function(e){ if(e.target===this)closeBoardModal(); });
+
+function submitPost(){
+  const text = document.getElementById('bText').value.trim();
+  const cat = document.getElementById('bCat').value;
+  if(!text){ showToast('⚠ 内容を入力してください'); return; }
+  if(!currentUser){ showToast('⚠ ログインが必要です'); return; }
+  const now = new Date();
+  const time = `${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()} ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
+  boardPosts.push({ id:boardNextId++, cat, author:currentUser.name, dept:currentUser.dept, text, time, likes:[], comments:[] });
+  closeBoardModal();
+  currentBoardCat='all';
+  document.querySelectorAll('.board-cat').forEach((b,i)=>b.classList.toggle('active',i===0));
+  renderBoard('all');
+  showToast('✅ 投稿しました！');
 }
 
 // ─── 自動ログイン（確認用・本番前に削除） ───
