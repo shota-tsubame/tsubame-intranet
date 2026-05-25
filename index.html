@@ -952,9 +952,6 @@ tr:hover td{background:#fafbfc;}
               <input type="text" id="knowSearchInput" placeholder="マニュアル・ガイドを検索..." oninput="knowSearch(this.value)">
             </div>
           </div>
-          <div id="knowAdminBtn" style="display:none;align-self:flex-end">
-            <button class="know-edit-btn" onclick="openKnowNew()">＋ 記事を追加</button>
-          </div>
         </div>
         <div class="know-cat-tabs">
           <button class="know-cat-tab active" onclick="showKnowCat('all',this)">すべて</button>
@@ -969,6 +966,9 @@ tr:hover td{background:#fafbfc;}
     </div>
     <div class="know-body">
       <div id="know-overview">
+        <div id="knowAdminBtn" style="display:none;justify-content:flex-end;margin-bottom:12px">
+          <button class="know-edit-btn" style="padding:8px 18px;font-size:12px" onclick="openKnowNew()">＋ 記事を追加</button>
+        </div>
         <div class="know-cat-grid" id="knowCatGrid"></div>
         <div class="stitle"><h2>新着・更新記事</h2></div>
         <div class="know-articles" id="knowRecentList"></div>
