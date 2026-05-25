@@ -445,6 +445,30 @@ tr:hover td{background:#fafbfc;}
   .logo-text{font-size:15px;}
 }
 
+
+/* ── KNOWLEDGE EDIT ── */
+.know-edit-btn{background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.3);border-radius:5px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--gold);cursor:pointer;font-family:inherit;transition:.18s;}
+.know-edit-btn:hover{background:rgba(200,168,75,0.3);}
+.know-modal-ov{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:999;}
+.know-modal-ov.open{display:flex;}
+.know-modal{background:var(--white);border-radius:14px;padding:28px;width:560px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:fadeUp .22s ease both;}
+.know-modal-title{font-family:'Shippori Mincho',serif;font-size:18px;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.km-label{font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:1px;display:block;margin-bottom:6px;margin-top:12px;}
+.km-input{width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:7px;font-size:13px;font-family:inherit;color:var(--text);outline:none;}
+.km-input:focus{border-color:var(--gold);}
+.km-textarea{width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:7px;font-size:13px;font-family:inherit;color:var(--text);outline:none;resize:vertical;min-height:80px;line-height:1.7;}
+.km-textarea:focus{border-color:var(--gold);}
+.km-select{width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:7px;font-size:13px;font-family:inherit;color:var(--text);outline:none;}
+.km-select:focus{border-color:var(--gold);}
+.km-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.km-badge-toggle{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--gray-200);background:var(--gray-100);color:var(--text-muted);transition:.15s;}
+.km-badge-toggle.on{background:var(--navy);border-color:var(--navy);color:var(--white);}
+.km-upload-area{border:2px dashed var(--gray-200);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:.18s;position:relative;margin-top:6px;}
+.km-upload-area:hover{border-color:var(--gold);background:var(--gold-pale);}
+.km-upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.know-article-card .edit-controls{display:none;gap:6px;margin-top:10px;}
+.know-article-card:hover .edit-controls{display:flex;}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 .fade-in{animation:fadeUp .35s ease both;}
 @media(max-width:900px){.main{grid-template-columns:1fr;padding:16px;}.dept-overview-grid{grid-template-columns:repeat(2,1fr);}.sum-cards{grid-template-columns:repeat(2,1fr);}.ph-inner{grid-template-columns:1fr;}.pres-content-grid{grid-template-columns:1fr;}}
@@ -928,6 +952,9 @@ tr:hover td{background:#fafbfc;}
               <input type="text" id="knowSearchInput" placeholder="マニュアル・ガイドを検索..." oninput="knowSearch(this.value)">
             </div>
           </div>
+          <div id="knowAdminBtn" style="display:none;align-self:flex-end">
+            <button class="know-edit-btn" onclick="openKnowNew()">＋ 記事を追加</button>
+          </div>
         </div>
         <div class="know-cat-tabs">
           <button class="know-cat-tab active" onclick="showKnowCat('all',this)">すべて</button>
@@ -968,6 +995,47 @@ tr:hover td{background:#fafbfc;}
   </div>
 
 </div><!-- /portalScreen -->
+
+<!-- KNOWLEDGE EDIT MODAL -->
+<div class="know-modal-ov" id="knowModal">
+  <div class="know-modal">
+    <div class="know-modal-title" id="knowModalTitle">📚 記事を追加</div>
+    <input type="hidden" id="kmEditId">
+    <label class="km-label">カテゴリ</label>
+    <select class="km-select" id="kmCat">
+      <option value="manual">乗務員マニュアル</option>
+      <option value="haisha">配車ガイド</option>
+      <option value="eigyo">営業ノウハウ</option>
+      <option value="safety">安全・規程</option>
+      <option value="service">接客・サービス</option>
+      <option value="system">システム操作</option>
+    </select>
+    <label class="km-label">タイトル</label>
+    <input class="km-input" id="kmTitle" type="text" placeholder="記事のタイトル">
+    <label class="km-label">概要（一覧に表示される説明）</label>
+    <input class="km-input" id="kmDesc" type="text" placeholder="簡単な説明を入力">
+    <label class="km-label">バッジ</label>
+    <div class="km-badges">
+      <div class="km-badge-toggle" data-badge="must" onclick="toggleKmBadge(this)">必読</div>
+      <div class="km-badge-toggle" data-badge="new" onclick="toggleKmBadge(this)">NEW</div>
+      <div class="km-badge-toggle" data-badge="imp" onclick="toggleKmBadge(this)">重要</div>
+      <div class="km-badge-toggle" data-badge="tip" onclick="toggleKmBadge(this)">ノウハウ</div>
+    </div>
+    <label class="km-label">本文（マークダウン風）</label>
+    <textarea class="km-textarea" id="kmBody" style="min-height:160px" placeholder="記事の本文を入力してください。&#10;&#10;## 見出し&#10;内容...&#10;&#10;- リスト項目1&#10;- リスト項目2&#10;&#10;> ポイント：重要な情報はここに"></textarea>
+    <label class="km-label">添付ファイル（PDF・画像）</label>
+    <div class="km-upload-area" onclick="document.getElementById('kmFileInput').click()">
+      <input type="file" id="kmFileInput" accept="image/*,.pdf" onchange="kmFilePreview(this)">
+      <div style="font-size:24px;margin-bottom:6px">📎</div>
+      <div style="font-size:12px;color:var(--text-muted)">タップしてファイルを選択（PDF・JPG・PNG）</div>
+      <div id="kmFilePreviewArea" style="margin-top:8px;font-size:12px;color:var(--navy)"></div>
+    </div>
+    <div class="mfooter" style="margin-top:18px">
+      <button class="btn-sec" onclick="closeKnowModal()">キャンセル</button>
+      <button class="btn-p btn-g" onclick="saveKnowArticle()">保存する</button>
+    </div>
+  </div>
+</div>
 
 <!-- TODAY BOARD EDIT MODAL -->
 <div class="tb-modal-ov" id="tbModal">
@@ -1502,6 +1570,192 @@ function saveTodayBoard() {
   showToast('✅ 共有事項を更新しました');
 }
 
+
+// ─── KNOWLEDGE CRUD ───
+let knowEditFile = null;
+
+function initKnowledgeAdmin(){
+  if(currentUser && currentUser.perm === 'admin'){
+    document.getElementById('knowAdminBtn').style.display = 'flex';
+  }
+}
+
+function toggleKmBadge(el){
+  el.classList.toggle('on');
+}
+
+function kmFilePreview(input){
+  knowEditFile = input.files[0] || null;
+  const area = document.getElementById('kmFilePreviewArea');
+  if(knowEditFile){
+    area.textContent = '📎 ' + knowEditFile.name;
+  } else {
+    area.textContent = '';
+  }
+}
+
+function openKnowNew(){
+  document.getElementById('knowModalTitle').textContent = '📚 記事を追加';
+  document.getElementById('kmEditId').value = '';
+  document.getElementById('kmTitle').value = '';
+  document.getElementById('kmDesc').value = '';
+  document.getElementById('kmBody').value = '';
+  document.getElementById('kmFilePreviewArea').textContent = '';
+  document.getElementById('kmCat').value = 'manual';
+  document.querySelectorAll('.km-badge-toggle').forEach(b => b.classList.remove('on'));
+  knowEditFile = null;
+  document.getElementById('knowModal').classList.add('open');
+}
+
+function openKnowEdit(id){
+  const a = KNOW_ARTICLES.find(x => x.id === id);
+  if(!a) return;
+  document.getElementById('knowModalTitle').textContent = '✏️ 記事を編集';
+  document.getElementById('kmEditId').value = id;
+  document.getElementById('kmCat').value = a.cat;
+  document.getElementById('kmTitle').value = a.title;
+  document.getElementById('kmDesc').value = a.desc;
+  // Convert body to text
+  const bodyText = (a.body||[]).map(s => {
+    if(s.type==='section') return '## ' + s.title + '\n' + s.content;
+    if(s.type==='list') return '## ' + s.title + '\n' + s.items.map(i=>'- '+i).join('\n');
+    if(s.type==='point') return '> ' + s.content;
+    if(s.type==='table') return '## ' + s.title;
+    return '';
+  }).join('\n\n');
+  document.getElementById('kmBody').value = bodyText;
+  document.querySelectorAll('.km-badge-toggle').forEach(b => {
+    b.classList.toggle('on', a.badges.includes(b.dataset.badge));
+  });
+  knowEditFile = null;
+  document.getElementById('kmFilePreviewArea').textContent = a.file_url ? '📎 既存ファイルあり' : '';
+  document.getElementById('knowModal').classList.add('open');
+}
+
+function closeKnowModal(){
+  document.getElementById('knowModal').classList.remove('open');
+  knowEditFile = null;
+}
+
+async function saveKnowArticle(){
+  const btn = document.querySelector('#knowModal .btn-p.btn-g');
+  btn.textContent = '保存中...'; btn.disabled = true;
+  try {
+    const cat = document.getElementById('kmCat').value;
+    const title = document.getElementById('kmTitle').value.trim();
+    const desc = document.getElementById('kmDesc').value.trim();
+    const bodyText = document.getElementById('kmBody').value.trim();
+    const badges = [...document.querySelectorAll('.km-badge-toggle.on')].map(b => b.dataset.badge);
+    const editId = document.getElementById('kmEditId').value;
+
+    if(!title){ showToast('⚠ タイトルを入力してください'); return; }
+
+    // Parse body text to body array
+    const body = parseKnowBody(bodyText);
+
+    // Upload file if selected
+    let file_url = null;
+    let file_type = null;
+    if(knowEditFile){
+      const ext = knowEditFile.name.split('.').pop();
+      const fileName = 'know_' + Date.now() + '.' + ext;
+      const uploadRes = await fetch(SUPABASE_URL + '/storage/v1/object/knowledge-files/' + fileName, {
+        method: 'POST',
+        headers: {'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': knowEditFile.type},
+        body: knowEditFile
+      });
+      if(uploadRes.ok){
+        file_url = SUPABASE_URL + '/storage/v1/object/public/knowledge-files/' + fileName;
+        file_type = knowEditFile.type.includes('pdf') ? 'pdf' : 'image';
+      }
+    }
+
+    const now = new Date();
+    const updated = now.getFullYear() + '/' + (now.getMonth()+1) + '/' + now.getDate();
+
+    const payload = {
+      cat, title, desc_text: desc, badges, author: currentUser.name,
+      body, file_url, file_type,
+      updated_at: new Date().toISOString()
+    };
+
+    // Save to Supabase
+    await sbPost('knowledge_articles', payload);
+
+    // Also update local array
+    if(editId){
+      const idx = KNOW_ARTICLES.findIndex(x => x.id == editId);
+      if(idx > -1){
+        KNOW_ARTICLES[idx] = {...KNOW_ARTICLES[idx], cat, title, desc, badges, body, updated, author: currentUser.name, file_url, file_type};
+      }
+    } else {
+      const newId = Math.max(...KNOW_ARTICLES.map(a => a.id)) + 1;
+      KNOW_ARTICLES.push({id: newId, cat, title, desc, badges, body, updated, author: currentUser.name, file_url, file_type});
+    }
+
+    closeKnowModal();
+    // Refresh current view
+    if(currentKnowCat === 'all'){
+      renderKnowCatGrid();
+      renderKnowRecent();
+    } else {
+      showKnowCat(currentKnowCat, null);
+    }
+    showToast('✅ 記事を保存しました');
+  } catch(e){
+    showToast('⚠ 保存に失敗しました');
+    console.error(e);
+  }
+  btn.textContent = '保存する'; btn.disabled = false;
+}
+
+async function deleteKnowArticle(id){
+  if(!confirm('この記事を削除しますか？')) return;
+  const idx = KNOW_ARTICLES.findIndex(x => x.id === id);
+  if(idx > -1) KNOW_ARTICLES.splice(idx, 1);
+  // Refresh
+  if(currentKnowCat === 'all'){
+    renderKnowCatGrid();
+    renderKnowRecent();
+  } else {
+    showKnowCat(currentKnowCat, null);
+  }
+  showToast('🗑 記事を削除しました');
+}
+
+function parseKnowBody(text){
+  if(!text.trim()) return [];
+  const lines = text.split('\n');
+  const body = [];
+  let current = null;
+
+  lines.forEach(line => {
+    if(line.startsWith('## ')){
+      if(current) body.push(current);
+      current = {type:'section', icon:'📌', title: line.slice(3), content:''};
+    } else if(line.startsWith('- ')){
+      if(!current || current.type !== 'list'){
+        if(current) body.push(current);
+        current = {type:'list', icon:'📋', title:'', items:[]};
+      }
+      current.items.push(line.slice(2));
+    } else if(line.startsWith('> ')){
+      if(current) body.push(current);
+      current = {type:'point', content: line.slice(2)};
+      body.push(current);
+      current = null;
+    } else if(line.trim() && current){
+      if(current.type === 'section'){
+        current.content += (current.content ? '\n' : '') + line;
+      }
+    }
+  });
+  if(current) body.push(current);
+  return body;
+}
+
+document.getElementById('knowModal').addEventListener('click', function(e){ if(e.target===this) closeKnowModal(); });
+
 document.getElementById('tbModal').addEventListener('click', function(e){ if(e.target===this) closeTbModal(); });
 const KNOW_CATS=[
   {id:'manual',name:'乗務員マニュアル',icon:'📋',color:'#e8f0fe',count:8,new:2},
@@ -1660,6 +1914,7 @@ let currentKnowCat='all', currentKnowArticleId=null;
 function initKnowledge(){
   renderKnowCatGrid();
   renderKnowRecent();
+  initKnowledgeAdmin();
 }
 
 function renderKnowCatGrid(){
@@ -1688,9 +1943,14 @@ function knowArticleCardHtml(a){
       <div class="kac-title">${a.title}</div>
       <div class="kac-desc">${a.desc}</div>
       <div class="kac-meta"><span>📅 ${a.updated}</span><span>✍️ ${a.author}</span></div>
+    <div class="edit-controls" id="kedit-${a.id}">
+        <button class="know-edit-btn" onclick="event.stopPropagation();openKnowEdit(${a.id})">編集</button>
+        <button class="know-edit-btn" style="color:#dc2626;border-color:#dc2626;background:rgba(220,38,38,0.08)" onclick="event.stopPropagation();deleteKnowArticle(${a.id})">削除</button>
+      </div>
     </div>
     <div class="kac-arrow">›</div>
-  </div>`;
+  </div>\`;
+
 }
 
 function showKnowCat(catId, btn){
